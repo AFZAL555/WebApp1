@@ -1,0 +1,89 @@
+
+#wrapper {
+  margin-top: 131px;
+  margin-bottom: 80px;
+  height: 302px;
+}
+#wrapper2 {
+  margin-top: 74px;
+  margin-bottom: 100px;
+  height: 302px;
+}
+
+#kl02{
+  font-size: small;
+  text-decoration: none;
+}
+.form-signin {
+    width: 383px;
+    height: 323px;
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-radius: 41px;
+    
+  }
+.form-signin-heading{
+
+      margin-bottom: 30px;
+}
+.form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    
+
+}
+.input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+.input[type="password"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+#username{
+  color: azure;
+  font-size:x-large;
+
+}
+#list1{
+  margin-left: 50px;
+}
+.search {
+  position: relative;
+  box-shadow: 0 0 30px rgba(51, 51, 51, .1)
+}
+
+.search input {
+  height: 45px;
+  text-indent: 25px;
+  border: 2px solid #d6d4d4
+}
+
+.search input:focus {
+  box-shadow: none;
+  border: 2px solid blue
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 16px
+}
+
+.search button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 35px;
+  width: 110px;
+  background: blue
+}

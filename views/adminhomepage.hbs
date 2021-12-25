@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-danger fs-1" href="#"><b> BRO-CART</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+          <a class="nav-link text-white" href="">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Search User...."> <button class="btn btn-primary" type="submit">Search</button> </div>
+        </div>
+    </div>
+</div>
+    <div  id="list2" class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul  class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li id="list1" class="nav-item">
+          {{#if }}
+          <h6  id="username">
+            {{Name}}
+          </h6>
+          {{/if}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+ <div class="container">
+    <div class="row">
+      {{#each }}
+      <div class="col-sm-3 g-2 max-auto d-flex   my-2 ">
+       <div class="card text-center border-2 border-success">
+        <div class="card-body">
+          <h6 class="card-title px-1 ">{{}}</h6>
+          <img src="{{}}" class="card-img-top my-2" alt="Phone">
+          <div class="card-body">
+            <h5 class="card-title ">{{}}</h5>
+            <p class="card-text">{{}}</p>
+            <span class="card-text text-danger"><b>RS.{{}}</b></span><br>
+            <a href="#" class="btn btn-dark mx-auto">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
