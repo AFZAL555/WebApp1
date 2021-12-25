@@ -1,0 +1,14 @@
+
+    <div class="container " id="wrapper2">
+    <form class="form-signin" method="post" action="/adminlog8714/userupdate/{{user._id}}"
+        style="width: 400px;height: 430px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;"
+        autocomplete="off">
+        <center>
+            <h4 class="form-signin-heading text-danger ">Update UserData</h4>
+        </center>
+        <input type="text" class="form-control" name="Name" placeholder="Name" required="" value="{{user.Name}}" /><br>
+        <input type="text" class="form-control" name="Email" placeholder="Email" required="" value="{{user.Email}}"/><br>
+        <input type="text" class="form-control" name="Mob" placeholder="Mobile" required="" value="{{user.Mob}}"/><br>
+        <center><button class="btn btn-lg btn-success btn-block" type="submit">Update</button></center>
+    </form>
+</div>

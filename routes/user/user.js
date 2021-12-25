@@ -8,11 +8,11 @@ router.get('/',function(req,res,next){
     console.log(req.session.status);
     console.log("....................");
     if(req.session.status){
-        res.redirect('/')
+        res.render('user/use')
     }
     else{
 
-        res.render('user/userSignin',{err:req.session.loginError}) 
+        res.render('user/userlogin',{err:req.session.loginError}) 
         req.session.loginError = false;
     }
     

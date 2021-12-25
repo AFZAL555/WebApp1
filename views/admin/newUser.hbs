@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-danger fs-1" href="#"><b> BRO-CART</b></a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/adminlog8714/adminhome">Back</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/adminlog8714/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+</nav>
+<br>
+{{#if successmessage }}
+<div class="alert alert-success alert-dismissible fade show " role="alert">
+    {{successmessage}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#if errormessage}}
+<div class="alert alert-warning alert-dismissible fade show " role="alert">
+    {{errormessage}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+
+<div class="container ">
+</div>
+<div class="container " id="wrapper2">
+
+    <form class="form-signin" action="/adminlog8714/adminnewuser" method="post"
+        style="width: 400px;height: 430px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;"
+        autocomplete="off">
+        <center>
+            <h4 class="form-signin-heading text-danger ">CREATE NEW USER</h4>
+        </center>
+        <input type="text" class="form-control" name="Name" placeholder="Name" required="" /><br>
+        <input type="text" class="form-control" name="Email" placeholder="Email" required="" /><br>
+        <input type="password" class="form-control" name="Password" placeholder="Password" required="" /><br>
+        <input type="text" class="form-control" name="Mob" placeholder="Mobile" required="" /><br>
+        <center><button class="btn btn-lg btn-success btn-block" type="submit">Create New User</button></center>
+    </form>
+</div>
+

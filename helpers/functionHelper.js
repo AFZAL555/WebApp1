@@ -2,13 +2,15 @@ const req = require('express/lib/request');
 const async = require('hbs/lib/async');
 const {ObjectId, Db} = require('mongodb');
 const db = require('../config/DBconnection');
+const collections = require('../config/collections');
+
 
 module.exports = {
 
     newuserData:(userData)=>{
         return new Promise((resolve,reject)=>{
             userData.status=true
-            db.get().collection('userDatas').insertOne(userData).then(()=>{
+            db.get().collection(collections.USER_COLLECTION).insertOne(userData).then(()=>{
                 return resolve(true)
             })
             .catch(()=>{
@@ -16,13 +18,10 @@ module.exports = {
             })
         })
     },
-    checkUser:(userDetail)=>{
+    checkUser:(userData)=>{
         return new Promise(async(resolve,reject)=>{
-            var user = await db.get().collection('userDatas').findOne({email:userDetail.email,password:userDetail.password,status:true})
+            var user = await db.get().collection(collections.USER_COLLECTION).findOne({email:userData.email,password:userData.password,status:true})
             console.log(user);
-            // if(user){
-            //     var userStatus=user.status
-            // }
             
             if(user){
                 
@@ -33,21 +32,22 @@ module.exports = {
             }
         })
     },
-    adminValidate:(adminCredential)=>{
+    adminValidate:(userData)=>{
         return new Promise(async(resolve,reject)=>{
-            var admin = await db.get().collection('adminData').findOne({adminName:adminCredential.adminName,password:adminCredential.password})
+            var admin = await db.get().collection(collections.ADMIN_COLLECTION).findOne({Email:userData.AdminEmail,Password:userData.AdminPassword})
 
             if(admin){
-                return resolve({status:true})
+                return resolve({admin,status:true})
             }
             else{
                 return resolve({status:false})
             }
         })
     },
+
     getuserDetails:()=>{
         return new Promise(async(resolve,reject)=>{
-            var userDetails =await db.get().collection('userDatas').find().toArray();
+            var userDetails =await db.get().collection(collections.USER_COLLECTION).find().toArray();
 
             if(userDetails){
                 return resolve({userDetails,status:true})
@@ -60,7 +60,7 @@ module.exports = {
     },
     userDetails:(id)=>{
         return new Promise(async(resolve,reject)=>{
-            var userDetail = await db.get().collection('userDatas').findOne({_id:ObjectId(id)})
+            var userDetail = await db.get().collection(collections.USER_COLLECTION).findOne({_id:ObjectId(id)})
            
                 if(userDetail){
                     return resolve({userDetail,status:true})
@@ -73,10 +73,13 @@ module.exports = {
     userModify:(id,updatedBody)=>{
         
         return new Promise((resolve,reject)=>{
-            db.get().collection('userDatas').updateOne({_id:ObjectId(id)},{
+            db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(id)},{
                 $set:{
-                    firstName: updatedBody.firstName,
-                    lastName: updatedBody.lastName
+                    Name: updatedBody.Name,
+                    Email: updatedBody.Email,
+                    Mob: updatedBody.Mob
+
+                    
                 }}).then(()=>{
                 return resolve(true)
             })
@@ -87,7 +90,7 @@ module.exports = {
     },
     userBlock:(id)=>{
         return new Promise((resolve,reject)=>{
-            db.get().collection('userDatas').updateOne({_id:ObjectId(id)},{
+            db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(id)},{
                 $set:{
                     status:false
                 }}).then(()=>{
@@ -101,7 +104,7 @@ module.exports = {
     },
     userUnblock:(id)=>{
         return new Promise((resolve,reject)=>{
-            db.get().collection('userDatas').updateOne({_id:ObjectId(id)},{
+            db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(id)},{
                 $set:{
                     status:true
                 }})
@@ -115,7 +118,7 @@ module.exports = {
     },
     userDelete:(id)=>{
         return new Promise((resolve,reject)=>{
-            db.get().collection('userDatas').deleteOne({_id:ObjectId(id)}).then(()=>{
+            db.get().collection(collections.USER_COLLECTION).deleteOne({_id:ObjectId(id)}).then(()=>{
                 return resolve(true)
             })
             .catch(()=>{
@@ -123,12 +126,13 @@ module.exports = {
             })
         })
     },
+    
     adminUsercreate:(userinfo)=>{
         return new Promise((resolve,reject)=>{
 
             userinfo.status=true
             
-            db.get().collection('userDatas').insertOne(userinfo)
+            db.get().collection(collections.USER_COLLECTION).insertOne(userinfo)
         
         .then(()=>{
             return resolve(true) 

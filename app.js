@@ -8,7 +8,7 @@ var session=require('express-session')
 
 var userRouter = require('./routes/user/user');
 var adminRouter = require('./routes/admin/admin');
-var adminCRUDRouter = require('./routes/admin/adminUserCRUD');
+
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'jdsfjkdfukdbjbdsjfgusdfvjbsdjv',saveUninitialized:false,resave:false,cookie:{secure:false ,maxAge:600000}}));
+app.use(session({secret: 'veryofficialsecret',saveUninitialized:true,resave:false,cookie:{secure:false ,maxAge:6000000}}));
 
 app.use(function(req,res,next)
 {
@@ -39,7 +39,6 @@ db.connect((err)=>{
 
 app.use('/', userRouter);
 app.use('/adminlog8714', adminRouter);
-app.use('/adminCRUD', adminCRUDRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-danger fs-1" href="#"><b> BRO-CART</b></a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/adminlog8714/adminhome">Back</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/adminlog8714/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+</nav>
+ 
+ 
+ 
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex pt-2 mx-5">
+                    <input class="form-control me-2" onkeyup="search()" id="UserSearch" style="width: 20rem;" type="search" placeholder="Search" aria-label="Search">
+                    
+                </form>   
+                 <a class="btn btn-primary mt-2 mx-2 ms-5" href="/adminlog8714/adminhome" style="width: 10rem; height:2.5rem" type="submit">Back</a>
+                 <a class="btn btn-danger  mt-2 "     href="/adminlog8714/logout" style="width: 8rem; height:2.5rem" type="submit">Log Out</a>   
+            </div>
+        </nav>
+        <table class="table" id="userlist" >
+            <thead>
+                <tr >
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Mob</th>
+                <th scope="col">Permission</th>
+                <th scope="col">Operation</th>
+                </tr>
+            </thead>
+                <tbody >
+                    {{#each userDetails}}
+                        <tr class="align-middle" id>
+                            <td>{{this.Name}}</td>
+                            <td>{{this.Email}}</td>
+                            <td>{{this.Password}}</td>
+                            <td>{{this.Mob}}</td>
+                            {{#if this.status}}
+                            <td>Yes</td>
+                            {{else}}
+                            <td>No</td>
+                            {{/if}}
+                            <td>
+                                <a class="btn btn-success mt-2 " href="/adminlog8714/usermodify/{{this._id}}"  type="submit">Update</a>
+                                {{#if this.status}}
+                                <a class="btn btn-info mt-2 "  href="/adminlog8714/block/{{this._id}}"  type="submit">Block User</a>
+                                {{else}}
+                                <a class="btn btn-info mt-2 "  href="/adminlog8714/unblock/{{this._id}}"  type="submit">Unblock User</a>
+                                {{/if}}
+                                <a class="btn btn-danger mt-2 "  href="/adminlog8714/delete/{{this._id}}"  type="submit">Delete User</a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+        </table>
+    </div>
+</div>

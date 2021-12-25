@@ -1,26 +1,19 @@
 <div class="container ">
 </div>
 <div class="container " id="wrapper">
-    {{#if successmessage }}
-    <div class="alert alert-warning alert-dismissible fade show " role="alert">
-        {{successmessage}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {{/if}}
-
      {{#if errormessage}}
     <div class="alert alert-warning alert-dismissible fade show " role="alert">
         {{errormessage}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {{/if}}
-    <form class="form-signin " action="" method="post" autocomplete="off">
+    <form class="form-signin " action="/adminlog8714/adminauthentication" method="post" autocomplete="off">
         <center>
             <h2 class="form-signin-heading text-danger ">Admin Login</h2>
         </center>
 
-        <input type="text" class="form-control" name="Email" placeholder="Email" required="" autofocus="" /><br>
-        <input type="password" class="form-control" name="Password" placeholder="Password" required="" /><br>
+        <input type="text" class="form-control" name="AdminEmail" placeholder="Email" required="" autofocus="" /><br>
+        <input type="password" class="form-control" name="AdminPassword" placeholder="Password" required="" /><br>
         
         <center><button class="btn btn-lg btn-success btn-block" type="submit">Login</button></center>
     </form>

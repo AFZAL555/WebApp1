@@ -1,9 +1,9 @@
 function searchUser() {
     
     var valuein, sortv, list, tr, td, i, Value;
-    valuein = document.getElementById("Search");
+    valuein = document.getElementById("UserSearch");
     sortv = valuein.value.toUpperCase();
-    list = document.getElementById("adminTable");
+    list = document.getElementById("userlist");
     tr = list.getElementsByTagName("tr");
   
     
