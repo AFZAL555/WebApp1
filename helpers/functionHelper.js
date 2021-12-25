@@ -20,7 +20,7 @@ module.exports = {
     },
     checkUser:(userData)=>{
         return new Promise(async(resolve,reject)=>{
-            var user = await db.get().collection(collections.USER_COLLECTION).findOne({email:userData.email,password:userData.password,status:true})
+            var user = await db.get().collection(collections.USER_COLLECTION).findOne({Email:userData.Email,Password:userData.Password,status:true})
             console.log(user);
             
             if(user){

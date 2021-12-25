@@ -183,7 +183,7 @@ router.post('/userupdate/:id',function(req,res,next){
 
     functionhelper.userModify(id,updatedData).then((response)=>{
         if(response){
-            res.redirect('/admin/userslist')
+            res.redirect('/adminlog8714/userslist')
 
         }
         else{

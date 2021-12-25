@@ -8,14 +8,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {{/if}}
-    <form class="form-signin " action="" method="post" autocomplete="off">
+    <form class="form-signin " action="/userAuthentication" method="post" autocomplete="off">
         <center>
             <h2 class="form-signin-heading text-danger ">Login</h2>
         </center>
 
         <input type="text" class="form-control" name="Email" placeholder="Email" required="" autofocus="" /><br>
         <input type="password" class="form-control" name="Password" placeholder="Password" required="" /><br>
-        <a href=""  id="kl02">Create an Account?</a><br><br>
+        <a href="/signup"  id="kl02">Create an Account?</a><br><br>
         <center><button class="btn btn-lg btn-success btn-block" type="submit">Login</button></center>
     </form>
 </div>

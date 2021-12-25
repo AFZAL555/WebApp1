@@ -1,9 +1,24 @@
 
-<div class="container ">
+{{#if successmessage }}
+<div class="alert alert-success alert-dismissible fade show " role="alert">
+    {{successmessage}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+{{/if}}
+
+{{#if errormessage}}
+<div class="alert alert-warning alert-dismissible fade show " role="alert">
+    {{errormessage}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+
+
+
+<div class="container ">
 <div class="container " id="wrapper2">
-   
-    <form class="form-signin"  action="" method="post" style="width: 400px;height: 430px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;" autocomplete="off">
+<form class="form-signin"  action="/signupcomplete" method="post" style="width: 400px;height: 430px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;" autocomplete="off">
         <center>
             <h4 class="form-signin-heading text-danger ">CREATE AN ACCOUNT</h4>
         </center>
@@ -11,7 +26,8 @@
         <input type="text" class="form-control" name="Email" placeholder="Email" required="" /><br>
         <input type="password" class="form-control" name="Password" placeholder="Password" required="" /><br>
         <input type="text" class="form-control" name="Mob" placeholder="Mobile" required="" /><br>
-        <a href=""  id="kl02">Already have an Account?</a><br><br>
+        <a href="/"  id="kl02">Already have an Account?</a><br><br>
         <center><button class="btn btn-lg btn-success btn-block" type="submit">Register</button></center>
     </form>
+</div>
 </div>
