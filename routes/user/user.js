@@ -1,6 +1,6 @@
 var express = require('express');
 const session = require('express-session');
-const { response } = require('../../app');
+const { response } = require('../../index');
 var router = express.Router();
 var functionhelper = require('../../helpers/functionHelper')
 
