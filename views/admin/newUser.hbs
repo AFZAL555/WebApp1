@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 <nav class="navbar navbar-expand-lg navbar-light  bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand text-danger fs-1" href="#"><b> BRO-CART</b></a>
@@ -38,17 +40,172 @@
 </div>
 <div class="container " id="wrapper2">
 
-    <form class="form-signin" action="/adminlog8714/adminnewuser" method="post"
-        style="width: 400px;height: 430px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;"
+    <form onsubmit="validate()" id="submited" class="form-signin" action="/adminlog8714/adminnewuser" method="post"
+        style="width: 400px;height: 490px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;"
         autocomplete="off">
         <center>
             <h4 class="form-signin-heading text-danger ">CREATE NEW USER</h4>
         </center>
-        <input type="text" class="form-control" name="Name" placeholder="Name" required="" /><br>
-        <input type="text" class="form-control" name="Email" placeholder="Email" required="" /><br>
-        <input type="password" class="form-control" name="Password" placeholder="Password" required="" /><br>
-        <input type="text" class="form-control" name="Mob" placeholder="Mobile" required="" /><br>
+        <input onkeyup="nameCheck()" oninput="this.value=this.value.replace(/[^A-Za-z]|^ /g,'')" id="name" type="text" class="form-control" name="Name" placeholder="Name" />
+        <p id="name-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
+        <input onkeyup="emailCheck()" oninput="this.value=this.value.replace(/\s/g, '')" id="email" class="form-control" name="Email" placeholder="Email"   />
+        <p id="email-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
+        <input onkeyup="passCheck()" oninput="this.value=this.value.replace(/\s/g, '')" id="passcheck" type="password" class="form-control" name="Password" maxlength="10" minlength="10" placeholder="Password" />
+        <p id="password-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
+        <input  onkeyup="phoneCheck()" oninput="this.value=this.value.replace(/[^\d]/,'')"  type="text" class="form-control" name="Mob" id="phone" placeholder="Mobile" />
+        <p id="phone-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
         <center><button class="btn btn-lg btn-success btn-block" type="submit">Create New User</button></center>
     </form>
 </div>
 
+<script>
+function validate(){
+
+      if(nameCheck()==true && emailCheck()==true &&passCheck()==true && phoneCheck()==true ){
+          
+      $.ajax({
+          
+          data:$("submited").serialize(),
+          method:"post",
+
+          success:function (response){
+              alert("Form submitted successfully")
+              window.location.reload()
+              
+          },
+          error:function (err){
+              alert("Something Error")
+
+          }
+      })
+ 
+      }
+
+  }
+
+    
+let nameTest,emailTest,phnTest,commentTest,passTest;
+
+function passCheck()
+{
+    var passVal=document.getElementById("passcheck").value
+    var regex=/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+    if (passVal==""){
+
+        $("#password-error").html("Field is required")
+		passTest= false;
+
+    }
+    
+    else if(passVal.match(regex)){
+        $("#password-error").html("")
+        
+        passTest=true;
+    }
+    
+    else if(passVal==" "){
+        $("#password-error").html("Invalid Entry");
+        
+        passTest=false;
+    }
+
+
+
+
+
+}
+
+function nameCheck() {
+    var nameVal=document.getElementById("name").value
+    var regex =  /^[-a-zA-Z-()]+(\s+[-a-zA-Z-()]+)*$/
+    if (nameVal==""){
+
+        $("#name-error").html("Field is required")
+		nameTest= false;
+
+    }
+   
+    else if(nameVal.match(regex)){
+        $("#name-error").html("")
+        nameTest=true;
+        }
+    
+}
+
+
+function emailCheck(){
+    var emailVal=document.getElementById("email").value
+    var regex=/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+    if (emailVal==""){
+        console.log("email input is empty");
+        $("#email-error").html("Field is required")
+       
+        emailTest=false;
+
+    }
+    else if(emailVal==" "){
+        console.log("Don't enter space first");
+        $("#email-error").html("Dont enter space first")
+       
+        emailTest=false;
+    }
+    else if(emailVal.match(regex)){
+        $("#email-error").html("")
+        
+        emailTest=true;
+    }
+    else{
+        $("#email-error").html("Invalid Entry");
+        
+        emailTest=false;
+    }
+}
+
+function phoneCheck(){
+    var phnVal=document.getElementById("phone").value
+    var regex=/^\d+$/;
+     if(phnVal=="" || phnVal==" "){
+        console.log("input field is empty");
+        $("#phone-error").html("Field is required")
+        
+        phnTest=false;
+    }
+    else if(phnVal.match(regex) && (phnVal.length == 10)){
+        //console.log(phnVal);
+        $('#phone-error').html("")
+        // $('#phone').css({'border':'solid 1px black'})
+        phnTest=true;
+    }
+    else if(phnVal.length<10){
+      if(phnVal.match(regex)){
+          $('#phone-error').html("Invalid phone number")
+        //   $('#phone').css({'border':'solid 1px red'})
+          phnTest=false;
+      }
+    }
+    else if(phnVal.length>10){
+        if(phnVal.match(regex)){
+            $('#phone-error').html("Invalid phone number")
+            // $('#phone').css({'border':'solid 1px red'})
+            phnTest=false;
+             }
+            
+      else{
+        $('#phone-error').html("Use only numbers ")
+        // $('#phone').css({'border':'solid 1px red'})
+        phnTest=false;
+      }
+    }
+    else{
+        $('#phone-error').html("Invalid number ")
+        // $('#phone').css({'border':'solid 1px red'})
+        phnTest=false;
+    }
+    
+
+}
+
+
+
+
+</script>

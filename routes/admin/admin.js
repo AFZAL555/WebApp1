@@ -3,7 +3,6 @@ var router = express.Router();
 var functionhelper = require('../../helpers/functionHelper');
 
 
-
 router.get('/',function(req,res,next){
     if(req.session.admin){
         res.redirect('/adminlog8714/adminhome');
@@ -124,6 +123,7 @@ router.get('/userslist',function(req,res,next){
             res.render('admin/userslist',{userDetails});
         })
     }
+    
     else{
         res.redirect('/adminlog8714');
     }

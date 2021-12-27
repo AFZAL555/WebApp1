@@ -1,12 +1,12 @@
 var express = require('express');
 const session = require('express-session');
-const { response } = require('../../index');
+const { response } = require('../../app');
 var router = express.Router();
 var functionhelper = require('../../helpers/functionHelper')
 
 router.get('/',function(req,res,next){
     if(req.session.status){
-        res.render('user/userhomepage')
+        res.redirect('/userhome')
     }
     else{
         res.render('user/userlogin',{err:req.session.loginError}) 

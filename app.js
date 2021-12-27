@@ -9,12 +9,13 @@ var session=require('express-session')
 var userRouter = require('./routes/user/user');
 var adminRouter = require('./routes/admin/admin');
 
-
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
 
 app.use(logger('dev'));
 app.use(express.json());

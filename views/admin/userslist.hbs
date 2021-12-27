@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <nav class="navbar navbar-expand-lg navbar-light  bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand text-danger fs-1" href="#"><b> BRO-CART</b></a>
 
@@ -17,26 +18,21 @@
                 </li>
             </ul>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex pt-2 mx-5">
-                    <input class="form-control me-2" onkeyup="searchUser()" id="UserSearch" style="width: 20rem;" type="search" placeholder="Search" aria-label="Search">
-                    
-                </form>   
+        
                  </div>
 </nav>
  
  
  
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex pt-2 mx-5">
-                    <input class="form-control me-2" onkeyup="search()" id="UserSearch" style="width: 20rem;" type="search" placeholder="Search" aria-label="Search">
-                    
-                </form>   
+                  
                  <a class="btn btn-primary mt-2 mx-2 ms-5" href="/adminlog8714/adminhome" style="width: 10rem; height:2.5rem" type="submit">Back</a>
                  <a class="btn btn-danger  mt-2 "     href="/adminlog8714/logout" style="width: 8rem; height:2.5rem" type="submit">Log Out</a>   
             </div>
         </nav><br>
-        <table class="table table-dark table-striped table-hover" id="userlist" >
+
+
+        <table class="table table-dark table-striped table-hover" id="myTable" >
             <thead>
                 <tr class="table-success">
                 <th scope="col">Name</th>
@@ -49,7 +45,7 @@
             </thead>
                 <tbody >
                     {{#each userDetails}}
-                        <tr class="align-middle" id>
+                        <tr class="align-middle">
                             <td>{{this.Name}}</td>
                             <td>{{this.Email}}</td>
                             <td>{{this.Password}}</td>
@@ -68,9 +64,18 @@
                                 {{/if}}
                                 <a class="btn btn-danger mt-2 "  href="/adminlog8714/delete/{{this._id}}"  type="submit">Delete User</a>
                             </td>
-                        </tr>
+                            </tr>
+    
                     {{/each}}
                 </tbody>
         </table>
     </div>
 </div>
+<script type="text/javascript" charset="" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>  
+   
+<script>
+
+ $( function () {
+    $('#myTable').DataTable();
+} );
+</script>
