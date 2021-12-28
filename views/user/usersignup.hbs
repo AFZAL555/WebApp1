@@ -20,7 +20,7 @@
 <div class="container ">
 <div class="container " id="wrapper2">
 
-<form  id="submited" class="form-signin"  action="/signupcomplete" method="post" style="width: 400px;height: 490px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;" autocomplete="off">
+<form onsubmit="validate()" id="submitted" class="form-signin"  action="/signupcomplete" method="post" style="width: 400px;height: 490px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;" autocomplete="off">
       
         <center><h4 class="form-signin-heading text-danger ">CREATE AN ACCOUNT</h4></center>
 
@@ -34,12 +34,29 @@
         <p id="phone-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
         <a href="/"  id="kl02">Already have an Account?</a><br><br>
 
-        <center><button class="btn btn-lg btn-success btn-block" type="submit">Register</button></center>
+        <center><button  class="btn btn-lg btn-success btn-block" type="submit">Register</button></center>
 
     </form>
 </div>
 </div>
 <script>
+function validate(){
+
+      if(nameCheck()==true && emailCheck()==true &&passCheck()==true && phoneCheck()==true )
+      {
+          
+         var k= document.getElementById("submitted").submit();
+          
+         
+      }
+      else
+      {
+          window.alert("Account Creation Failed");
+      }
+ 
+      
+
+  }
 
 
     

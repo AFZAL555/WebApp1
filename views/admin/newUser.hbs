@@ -40,7 +40,7 @@
 </div>
 <div class="container " id="wrapper2">
 
-    <form  class="form-signin" action="/adminlog8714/adminnewuser" method="post"
+    <form onsubmit="validate()" id="submitted" class="form-signin" action="/adminlog8714/adminnewuser" method="post"
         style="width: 400px;height: 490px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;"
         autocomplete="off">
         <center>
@@ -59,29 +59,23 @@
 </div>
 
 <script>
-{{!-- function validate(){
+function validate(){
 
-      if(nameCheck()==true && emailCheck()==true &&passCheck()==true && phoneCheck()==true ){
+      if(nameCheck()==true && emailCheck()==true &&passCheck()==true && phoneCheck()==true )
+      {
           
-      $.ajax({
+          document.getElementById("submitted").submit();
           
-          data:$("submited").serialize(),
-          method:"post",
-
-          success:function (response){
-              alert("Form submitted successfully")
-              window.location.reload()
-              
-          },
-          error:function (err){
-              alert("Something Error")
-
-          }
-      })
- 
+         
       }
+      else
+      {
+          window.alert("Account Creation Failed");
+      }
+ 
+      
 
-  } --}}
+  }
 
     
 let nameTest,emailTest,phnTest,commentTest,passTest;
