@@ -15,12 +15,10 @@
 {{/if}}
 
 
-
-
 <div class="container ">
 <div class="container " id="wrapper2">
 
-<form onsubmit="validate()" id="submitted" class="form-signin"  action="/signupcomplete" method="post" style="width: 400px;height: 490px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;" autocomplete="off">
+<form  id="contact-form" onsubmit="return checkDetails(event)" class="form-signin"  action="/signupcomplete" method="post" style="width: 400px;height: 490px;max-width: 450px;padding: 15px 35px 45px;margin: 5 auto;background-color: rgb(255, 254, 254);border: 2px solid rgba(17, 13, 13, 0.1);border-radius: 41px;" autocomplete="off">
       
         <center><h4 class="form-signin-heading text-danger ">CREATE AN ACCOUNT</h4></center>
 
@@ -28,8 +26,8 @@
         <p id="name-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
         <input onkeyup="emailCheck()" oninput="this.value=this.value.replace(/\s/g, '')" id="email" class="form-control" name="Email" placeholder="Email"   />
         <p id="email-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
-       <input onkeyup="passCheck()" oninput="this.value=this.value.replace(/\s/g, '')" id="passcheck" type="password" class="form-control" name="Password" maxlength="10" minlength="10" placeholder="Password" />
-        <p id="password-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
+       <input id="pass" type="password" class="form-control" name="Password"  placeholder="Password" />
+        <p id="#kkk-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
         <input  onkeyup="phoneCheck()" oninput="this.value=this.value.replace(/[^\d]/,'')"  type="tel" class="form-control" name="Mob" id="phone" placeholder="Mobile" />
         <p id="phone-error" style="color:rgb(250, 7, 7);font-style: italic;"></p>
         <a href="/"  id="kl02">Already have an Account?</a><br><br>
@@ -40,17 +38,32 @@
 </div>
 </div>
 <script>
-function validate(){
 
-      if(nameCheck()==true && emailCheck()==true &&passCheck()==true && phoneCheck()==true )
+ function checkDetails(e){
+      var pass1=document.getElementById("pass").value
+      
+      if(nameTest==true && emailTest==true && phnTest==true && pass1!="" )
       {
-          
-         var k= document.getElementById("submitted").submit();
-          
+      return true;
+    }
+    else
+    {
+      e.preventDefault();
+      window.alert("Enter all fields to Signup");
+    }
          
+  }
+
+
+function validate(){
+ 
+    if(nameTest==true && emailTest==true && phnTest==true )
+      {
+         var k= document.getElementById("submitted").submit();
+
       }
       else
-      {
+      {   document.getElementById("submitted").preventDefault();
           window.alert("Account Creation Failed");
       }
  
@@ -68,11 +81,13 @@ function nameCheck() {
     if (nameVal==""){
 
         $("#name-error").html("Field is required")
+        // $("#name").css({'border':'solid 1px red'})
 		nameTest= false;
 
     }
     else if(nameVal.match(regex)){
         $("#name-error").html("")
+        // $("#name").css({'border':'solid 1px black'})
         nameTest=true;
         }
     
@@ -83,65 +98,37 @@ function emailCheck(){
     var emailVal=document.getElementById("email").value
     var regex=/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
     if (emailVal==""){
-        console.log("email input is empty");
+        //console.log("email input is empty");
         $("#email-error").html("Field is required")
-       
+        // $("#email").css({'border':'solid 1px red'})
         emailTest=false;
 
     }
     else if(emailVal==" "){
-        console.log("Don't enter space first");
+        //console.log("Don't enter space first");
         $("#email-error").html("Dont enter space first")
-       
+        // $("#email").css({'border':'solid 1px red'})
         emailTest=false;
     }
     else if(emailVal.match(regex)){
         $("#email-error").html("")
-        
+        // $("#email").css({'border':'solid 1px black'})
         emailTest=true;
     }
     else{
         $("#email-error").html("Invalid Entry");
-        
+        // $("#email").css({'border':'solid 1px red'})
         emailTest=false;
     }
-}
-function passCheck()
-{
-    var passVal=document.getElementById("passcheck").value
-    var regex=/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
-    if (passVal==""){
-
-        $("#password-error").html("Field is required")
-		passTest= false;
-
-    }
-    
-    else if(passVal.match(regex)){
-        $("#password-error").html("")
-        
-        passTest=true;
-    }
-    
-    else if(passVal==" "){
-        $("#password-error").html("Invalid Entry");
-        
-        passTest=false;
-    }
-
-
-
-
-
 }
 
 function phoneCheck(){
     var phnVal=document.getElementById("phone").value
     var regex=/^\d+$/;
      if(phnVal=="" || phnVal==" "){
-        console.log("input field is empty");
+        //console.log("input field is empty");
         $("#phone-error").html("Field is required")
-        
+        // $('#phone').css({'border':'solid 1px red'})
         phnTest=false;
     }
     else if(phnVal.match(regex) && (phnVal.length == 10)){
@@ -178,6 +165,7 @@ function phoneCheck(){
     
 
 }
+
 
 
 </script>
